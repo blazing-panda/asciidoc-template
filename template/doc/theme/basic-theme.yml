@@ -48,14 +48,14 @@ page:
 vertical_rhythm: $base_line_height_length
 heading:
   font-family: Raleway
-  font_color: #e5892d
+  font_color: #007599
   font_size: 18
   font_style: normal
   line_height: 1.2
   margin_bottom: $vertical_rhythm
   image_vertical_align: top
 link:
-  font_color: #961d4e
+  font_color: #2EBAE6
   text_decoration: underline
 outline_list:
   indent: $base_font_size * 1.5
@@ -93,10 +93,10 @@ table:
 caption:
   side: left
   font_family: Raleway
-  font_color: #930020
+  font_color: #007599
   font_size: 10
 literal:
-  font_color: #961d4e
+  font_color: #e5892d
   font_family: Jetbrains Mono
 code:
   font_family: Jetbrains Mono
