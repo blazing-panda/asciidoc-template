@@ -2,10 +2,12 @@
 :listing-caption: Listing
 :source-highlighter: rouge
 :src: .
-:imagesdir: ./example-images
+:imagesdir: ./readme-examples/images
 :toc:
 :numbered:
 :toclevels: 3
+// defines teh syntax highlight theme, available themes can be found under:
+// https://github.com/rouge-ruby/rouge/tree/HEAD/lib/rouge/themes
 :rouge-style: github
 :pdf-themesdir: ./template/doc/theme
 :pdf-theme: basic
@@ -18,13 +20,22 @@
 
 == About
 
-This `.adoc` file is an example of how to use `AsciiDoc` as an alternative to Word / Markdown or Latex to cut down on time needed for writing documentation. The official documentation of `AsciiDoc` can be found at https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc.org].
+This `README.adoc` file is an example of how to use `AsciiDoc` as an alternative to Word, Markdown or Latex to cut down on time needed for writing documentation. The official documentation of `AsciiDoc` can be found at https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc.org].
 
 The provided template, uses custom theming and fonts and was made for use by students studying at `FH Hagenberg`, but can be used by anyone that wants to pick up AsciiDoc.
 
 The Template inside the `template` folder is structured like the requirements for most exercise submissions, containing a src and doc folder. The template and its dependencies itself is inside `./template/doc`. I recommend just copying the doc folder into the same level as your source code folder.
 
-Though, I created this template, I want to offer my thanks to *Florian W.* (flohero on github), for providing the `basic-theme.yaml` and the `auto-include.sh` script. The script can be used for creating automatic includes for all your code files inside your project. It works by providing the starting directory and the file extension to search for. This script is a `bash` script, i.e. to run it on Windows, use the `wsl` (Windows Subsystem for Linux). For Example: `auto-include.sh ./path/to/src cs` searches for `.cs` files in the provided directory and its subdirectories.
+Though, I created this template, I want to offer my thanks to *Florian W.* (flohero on github), for providing the initial `basic-theme.yaml` and the `auto-include.sh` script. The script can be used for creating automatic includes for all your code files inside your project. It works by providing the starting directory and the file extension to search for. This script is a `bash` script, i.e. to run it on Windows, use the `wsl` (Windows Subsystem for Linux). For Example:
+
+[source,sh]
+----
+ auto-include.sh ./path/to/src cs
+----
+
+searches for `.cs` files in the provided directory and its subdirectories.
+
+The generated pdf can be easily adjusted to your preferences by providing your own `theme.yaml` or adjusting the provided `basic-theme.yaml`.
 
 == Intro
 
@@ -32,11 +43,19 @@ AsciiDoc offers many features, that make it very easy to write a clean documenta
 
 A very convenient aspect of AsciiDoc is, that many popular IDE's offer some sort of support for AsciiDoc, be it natively or via plugins. This means, that you can manage both your Code and Documentation in the same Editor, not needing to switch between programs.
 
-This document for example was written in https://www.jetbrains.com/idea/[IntelliJ IDEA], with the help of the `AsciiDoc` plugin, which is available for all JetBrain IDE's. VS Code offers a similar experience via the `AsciiDoc` Extension. These plugins, also offer the ability to export the asciidoc file to a pdf, though some IDE's might require an installation of `AsciiDoc` via `Roby`, not JetBrains and VS Code though.
+This document for example was written in https://www.jetbrains.com/idea/[IntelliJ IDEA], with the help of the `AsciiDoc` plugin, which is available for all JetBrain IDE's. VS Code offers a similar experience via the `AsciiDoc` Extension. These plugins, also offer the ability to export the asciidoc file to a pdf, though some IDE's might require an installation of `AsciiDoc` via `Ruby`, not JetBrains and VS Code though.
+
+To see the pdf generated from this `.adoc` file, see `README.pdf`. Though GitHub supports `.adoc` files and renders them, it can not resolve the includes (needed for code in this example), there exists a workaround through a GitHub Action, though not perfect, at least it allows this file to be rendered properly. This is why this repo contains the `readme-source.adoc` file, which gets resolved to the README. Other platforms, such as GitLab, already support rendering includes, i.e. it is a long known GitHub issue / limitation.
 
 Since our submissions often require the exercise specification to be included, I recommend, using a pdf editor, filing out the required fields, and setting the completed exercise specification as the cover-image, this vastly reduces the hassle of needing to manually merge the pdfs if you have already submitted your exercise, but found something that needs fixing.
 
-To set a pdf as the cover-image / page, declare `:front-cover-image: path-to-the-specification.pdf` in the top section.
+To set a pdf as the cover-image / page, declare
+
+[source,adoc]
+----
+:front-cover-image: path-to-the-specification.pdf
+----
+in the top section.
 
 == Working with AsciiDoc
 
@@ -114,12 +133,26 @@ The brackets in the include statement can be used to format the output. Lines fo
 
 If you do not want to always give the full relative path, you can declare your own shorthands like `:src: path_to_src_directory` or for this example `:csharp:` and `:kotlin:`
 
- :kotlin: ./example-code/kotlin
- :csharp: ./example-code/csharp
+[source,adoc]
+----
+:kotlin: ./readme-examples/code/kotlin
+:csharp: ./readme-examples/code/csharp
+----
 
 
-:kotlin: ./example-code/kotlin
-:csharp: ./example-code/csharp
+:kotlin: ./readme-examples/code/kotlin
+:csharp: ./readme-examples/code/csharp
+
+and be called like:
+
+[source,adoc]
+-----
+.Example Kotlin code
+[source,kotlin]
+----
+ include::{kotlin}/StructuredConcurrency.kt[lines=23..]
+----
+-----
 
 .Example Kotlin code
 [source,kotlin]
