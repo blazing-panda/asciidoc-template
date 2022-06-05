@@ -1,0 +1,156 @@
+﻿:author: Fabian Haas
+:listing-caption: Listing
+:source-highlighter: rouge
+:src: .
+:imagesdir: ./example-images
+:toc:
+:numbered:
+:toclevels: 3
+:rouge-style: github
+:pdf-themesdir: ./template/doc/theme
+:pdf-theme: basic
+:pdf-fontsdir: ./template/doc/fonts
+// front-cover-image can be used to include the Exercise specification
+//:front-cover-image: ./Exercise1.pdf
+
+// Header / Title
+= AsciiDoc Template
+
+== About
+
+This `.adoc` file is an example of how to use `AsciiDoc` as an alternative to Word / Markdown or Latex to cut down on time needed for writing documentation. The official documentation of `AsciiDoc` can be found at https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc.org].
+
+The provided template, uses custom theming and fonts and was made for use by students studying at `FH Hagenberg`, but can be used by anyone that wants to pick up AsciiDoc.
+
+The Template inside the `template` folder is structured like the requirements for most exercise submissions, containing a src and doc folder. The template and its dependencies itself is inside `./template/doc`. I recommend just copying the doc folder into the same level as your source code folder.
+
+Though, I created this template, I want to offer my thanks to *Florian W.* (flohero on github), for providing the `basic-theme.yaml` and the `auto-include.sh` script. The script can be used for creating automatic includes for all your code files inside your project. It works by providing the starting directory and the file extension to search for. This script is a `bash` script, i.e. to run it on Windows, use the `wsl` (Windows Subsystem for Linux). For Example: `auto-include.sh ./path/to/src cs` searches for `.cs` files in the provided directory and its subdirectories.
+
+== Intro
+
+AsciiDoc offers many features, that make it very easy to write a clean documentation for your code. This document is a showcase of how to achieve different markups, include images, and code.
+
+A very convenient aspect of AsciiDoc is, that many popular IDE's offer some sort of support for AsciiDoc, be it natively or via plugins. This means, that you can manage both your Code and Documentation in the same Editor, not needing to switch between programs.
+
+This document for example was written in https://www.jetbrains.com/idea/[IntelliJ IDEA], with the help of the `AsciiDoc` plugin, which is available for all JetBrain IDE's. VS Code offers a similar experience via the `AsciiDoc` Extension. These plugins, also offer the ability to export the asciidoc file to a pdf, though some IDE's might require an installation of `AsciiDoc` via `Roby`, not JetBrains and VS Code though.
+
+Since our submissions often require the exercise specification to be included, I recommend, using a pdf editor, filing out the required fields, and setting the completed exercise specification as the cover-image, this vastly reduces the hassle of needing to manually merge the pdfs if you have already submitted your exercise, but found something that needs fixing.
+
+To set a pdf as the cover-image / page, declare `:front-cover-image: path-to-the-specification.pdf` in the top section.
+
+== Working with AsciiDoc
+
+=== Text formatting
+
+This section covers only the basic formatting options. For more info visit https://docs.asciidoctor.org/asciidoc/latest/text/[AsciiDoc.org].
+
+Text can be made *Bold* by placing it between two stars * *.
+
+_Italic_ is achieved, by placing it between two underscores _ _.
+
+`Monospace` can be achieved, by placing it between two apostrophes ` `:
+
+The option can also be *_`combined as needed`_*.
+
+=== Images
+
+To include images, start a line with the `imgae::` macro:
+
+ image::wator-parallel-aproach.png[]
+
+The square brackets, are needed for the image to be displayed instead of the text. The square brackets can also be used to change the image width / height or other properties.
+
+For an image to be displayed, it is also important, that there is an empty line before the `image` macro.
+
+.Caption for the example image
+image::wator-parallel-aproach.png[]
+
+All paths to an image that are relative, start add the current directory or at the directory specified by `:imagesdir:`.
+
+More on images can be found at https://docs.asciidoctor.org/asciidoc/latest/macros/images/[Asciidoc.org].
+
+=== Code
+
+Code snippets can be included, by using the `include::` macro and wrapping it in a `Source Code Block`:
+
+[source,adoc]
+-----
+[source,cs]
+----
+ include::./example-code/csharp/ControlFlow.cs[lines=9..30]
+----
+-----
+
+The square brackets, declare it as a code block, and the second parameter defines the source language to get correct syntax highlighting.
+
+The brackets in the include statement can be used to format the output. Lines for example, restrict the shown part to only the specified lines. `Lines=20..` would show everything after line 19 and could be used to exclude import / using statements.
+
+.Example C# code
+[source,cs]
+----
+include::./example-code/csharp/ControlFlow.cs[lines=9..30]
+----
+
+If you do not want to always give the full relative path, you can declare your own shorthands like `:src: path_to_src_directory` or for this example `:csharp:` and `:kotlin:`
+
+ :kotlin: ./example-code/kotlin
+ :csharp: ./example-code/csharp
+
+
+:kotlin: ./example-code/kotlin
+:csharp: ./example-code/csharp
+
+.Example Kotlin code
+[source,kotlin]
+----
+include::{kotlin}/StructuredConcurrency.kt[lines=23..]
+----
+
+.Example C# code which restricts the shown code to a few lines by specifying `lines=32..38`
+[source,cs]
+----
+include::{csharp}/ControlFlow.cs[lines=32..38]
+----
+
+More about code blocks can be read on https://docs.asciidoctor.org/asciidoc/latest/verbatim/source-blocks/[AsciiDoc.org].
+
+=== Lists / Enumerations
+
+AsciiDoc provides different ways to create lists and can be quite cumbersome at first.
+
+Ordered list can be created, by starting a line with dots. Every dot represents a level of intendation.
+
+. The first entry
+.. The next level
+... The third level
+. The second entry
+
+Unorderd lists are started with stars (*).
+
+* First entry
+** second level
+*** third level
+* Second entry
+
+Ordered and unordered list can be nested like this:
+
+[source,adoc]
+----
+* Nested List
++
+Text that is intended by continuing with the `+`
++
+. Ordered List
+.. second level
+* Second entry
+----
+
+* Mixed List
++
+Text that is intended by continuing with the `+`
++
+. Ordered List
+.. second level
+* Second entry
+
+More on list can be found at https://docs.asciidoctor.org/asciidoc/latest/lists/continuation/[AsciiDoc.org].

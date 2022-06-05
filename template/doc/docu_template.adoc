@@ -1,0 +1,24 @@
+﻿:author: xxx
+:listing-caption: Listing
+:source-highlighter: rouge
+// path to the directory containing the source code
+:src: ../src
+// path to the directory containing the images
+:imagesdir: ./images
+:toc:
+:numbered:
+:toclevels: 3
+:rouge-style: github
+:pdf-themesdir: ../theme
+:pdf-theme: basic
+:pdf-fontsdir: ../fonts
+// front-cover-image can be used to include the Exercise specification, for example:
+//:front-cover-image: ./Exercise1.pdf
+
+= Title / Exercise XX
+
+== Lösungsidee
+
+== Code
+
+== Tests

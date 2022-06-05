@@ -1,0 +1,108 @@
+﻿font:
+  catalog:
+    merge: true # set value to true to merge catalog with theme you're extending
+    Raleway:
+      normal: Raleway-Regular.ttf
+      bold: Raleway-Bold.ttf
+      italic: Raleway-Italic.ttf
+      bold_italic: Raleway-BoldItalic.ttf
+    IBM Plex:
+      normal: IBMPlexSans-Regular.ttf
+      bold: IBMPlexSans-Bold.ttf
+      italic: IBMPlexSans-Italic.ttf
+      bold_italic: IBMPlexSans-BoldItalic.ttf
+    Jetbrains Mono:
+      normal: JetBrainsMono-Regular.ttf
+      bold: JetBrainsMono-Bold.ttf
+      italic: JetBrainsMono-Italic.ttf
+      bold_italic: JetBrainsMono-BoldItalic.ttf
+    # M+ 1mn supports ASCII and the circled numbers used for conums
+    M+ 1mn:
+      normal: mplus-1m-regular.ttf
+      bold: mplus-1mn-bold.ttf
+      italic: mplus-1m-regular.ttf
+      bold_italic: mplus-1m-regular.ttf
+    # M+ 1p supports Latin, Latin-1 Supplement, Latin Extended, Greek, Cyrillic, Vietnamese, Japanese & an assortment of symbols
+    # It also provides arrows for ->, <-, => and <= replacements in case these glyphs are missing from font
+    M+ 1p Fallback:
+      normal: MPLUS1p-Regular.ttf
+      bold: MPLUS1p-Bold.ttf
+      italic: MPLUS1p-Regular.ttf
+      bold_italic: MPLUS1p-Regular.ttf
+  fallbacks:
+    - M+ 1p Fallback
+base:
+  font_family: IBM Plex
+  font_color: #333333
+  font_size: 10
+  line_height_length: 17
+  line_height: $base_line_height_length / $base_font_size
+title_page:
+  align: left
+page:
+  layout: portrait
+  margin: [25mm, 20mm, 15mm, 20mm]
+  margin_inner: 25mm
+  margin_outer: 20mm
+  size: A4
+vertical_rhythm: $base_line_height_length
+heading:
+  font-family: Raleway
+  font_color: #e5892d
+  font_size: 18
+  font_style: normal
+  line_height: 1.2
+  margin_bottom: $vertical_rhythm
+  image_vertical_align: top
+link:
+  font_color: #961d4e
+  text_decoration: underline
+outline_list:
+  indent: $base_font_size * 1.5
+header:
+  font-family: Raleway
+  height: 0.75in
+  line-height: 1
+  recto:
+    right:
+      content: '{docdate}'
+    center:
+      content: '{document-title}'
+    left:
+      content: '{author}'
+  verso:
+    right:
+      content: '{docdate}'
+    center:
+      content: '{document-title}'
+    left:
+      content: '{author}'
+footer:
+  height: 0.75in
+  line-height: 1
+  recto:
+    right:
+      content: '{section-title} | *{page-number}*'
+  verso:
+    left:
+      content: '*{page-number}* | {section-title}'
+image:
+  align: center
+table:
+  caption_side: bottom
+caption:
+  side: left
+  font_family: Raleway
+  font_color: #930020
+  font_size: 10
+literal:
+  font_color: #961d4e
+  font_family: Jetbrains Mono
+code:
+  font_family: Jetbrains Mono
+  font_size: 6
+conum:
+  font_family: M+ 1mn
+  font_color: $literal_font_color
+  font_size: $base_font_size
+  line_height: 4 / 3
