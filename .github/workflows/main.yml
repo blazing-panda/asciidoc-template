@@ -5,7 +5,7 @@ on:
 
   push:
     paths:
-      - README.adoc
+      - readme-source.adoc
     branches:
       - '**'
 
