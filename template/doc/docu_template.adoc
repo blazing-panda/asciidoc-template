@@ -9,9 +9,9 @@
 :numbered:
 :toclevels: 3
 :rouge-style: github
-:pdf-themesdir: ../theme
+:pdf-themesdir: ./theme
 :pdf-theme: basic
-:pdf-fontsdir: ../fonts
+:pdf-fontsdir: ./fonts
 // front-cover-image can be used to include the Exercise specification, for example:
 //:front-cover-image: ./Exercise1.pdf
 
